@@ -27,7 +27,7 @@ Those findings became more valuable than the original project itself.
 
 ---
 
-![CallTrace Comparison](/assets/images/Classic/CallTrace 10.png) | ![ Comparison](/assets/images/direct/EID 10 the wanted.png) | ![CallTrace ](/assets/images/Indirect/wanted EID 10.png)
+![CallTrace Comparison]({{"/assets/images/Classic/CallTrace 10.png"}}) | ![ Comparison]({{"/assets/images/direct/EID 10 the wanted.png"}}) | ![CallTrace ]({{"/assets/images/Indirect/wanted EID 10.png"}})
 
 *Figure 1 — EID 10 CallTrace behavior across Classic Win32 injection, Direct Syscalls, and Indirect Syscalls.*
 
@@ -245,7 +245,7 @@ That has two important implications:
 
 ---
 
-![Indirect Syscall EID 8](/assets/images/Indirect/EID 8.png)
+![Indirect Syscall EID 8]({{"/assets/images/Indirect/EID 8.png"}})
 
 *— Indirect syscall execution still generating EID 8 CreateRemoteThread telemetry.*
 
