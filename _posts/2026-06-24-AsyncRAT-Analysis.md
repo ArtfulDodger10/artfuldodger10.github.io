@@ -272,7 +272,7 @@ Large encoded data blocks embedded within the executable.
 | Field | Value |
 |---|---|
 | PID | 3144 |
-| Path | `C:\Users\admin\AppData\Local\Temp\<sha256>.exe` |
+| Path | `C:\Users\admin\AppData\Local\Temp\3DBAF616DCAACFCF66909B7A3404D1536F9E0D230B3B59934F1CCC6FE3E20554.exe` |
 | Parent | `explorer.exe` |
 | User | admin |
 | Integrity Level | MEDIUM |
