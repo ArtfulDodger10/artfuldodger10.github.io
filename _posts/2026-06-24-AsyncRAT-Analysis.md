@@ -332,7 +332,7 @@ The `BSoD: true` and `AntiVM: true` flags confirm that both the process-critical
 
 | PID | Process | IP | Domain | Reputation |
 |---|---|---|---|---|
-| 3144 | `<sample>.exe` | `172.67.139.209:7080` | `hubscore.io` | **Malicious** |
+| 3144 | `WinRar.exe` | `172.67.139.209:7080` | `hubscore.io` | **Malicious** |
 
 The sample connected to `hubscore.io` via Cloudflare infrastructure (`172.67.139.209`, `104.21.94.206`) — the operator is hiding behind Cloudflare's proxy. The connection was made on port 7080, one of the four configured C2 ports.
 
