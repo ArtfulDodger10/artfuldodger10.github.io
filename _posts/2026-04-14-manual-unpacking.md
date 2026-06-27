@@ -4,7 +4,7 @@ date: 2026-04-15 00-00-00 +0800
 categories: [Reverse Engineering]
 tags: [Unpacking, Manual Unpacking, Reverse Engineering, Malware Analysis, CTFs]
 image: /assets/images/header.png
-description: "A comprehensive guide to identifying and manually unpacking 64-bit UPX-packed binaries using four distinct reverse engineering techniques: Tail Jump, Memory Write, DEP Trick, Call Stack Backtracing, and Injecting Payload to an allocated memory."
+description: "A comprehensive guide to identifying and manually unpacking 64-bit UPX-packed binaries using 5 distinct reverse engineering techniques: Tail Jump, Memory Write, DEP Trick, Call Stack Backtracing, and Injecting Payload to an allocated memory."
 ---
 ## Introduction
 
