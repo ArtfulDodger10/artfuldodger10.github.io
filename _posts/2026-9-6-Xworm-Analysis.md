@@ -52,7 +52,7 @@ On this page
 
 ## XWorm TL;DR
 
-XWorm is a feature-rich Remote Access Trojan sold as Malware-as-a-Service on underground forums since 2022. It is builder-based — any buyer receives a panel and a generator producing customized payloads, which makes attribution to a specific threat actor rarely possible. In this sample, the payload arrived through a phishing email impersonating the UAE Ministry of Human Resources, delivered via a multi-stage chain starting with a JavaScript dropper and ending with XWorm V7.1 injected into MSBuild.exe. The previous sample I analyzed from the same family used a VBScript downloader — that analysis is documented [here](https://artfuldodger10.github.io/postsXWorm-RAT-Malware-Analysis/). Unlike that sample where the C2 was dead before the payload could be retrieved, this chain was fully intact and analyzed end to end.
+XWorm is a feature-rich Remote Access Trojan sold as Malware-as-a-Service on underground forums since 2022. It is builder-based — any buyer receives a panel and a generator producing customized payloads, which makes attribution to a specific threat actor rarely possible. In this sample, the payload arrived through a phishing email impersonating the UAE Ministry of Human Resources, delivered via a multi-stage chain starting with a JavaScript dropper and ending with XWorm V7.1 injected into MSBuild.exe. The previous sample I analyzed from the same family used a VBScript downloader — that analysis is documented [here](https://artfuldodger10.github.io/posts/XWorm-RAT-Malware-Analysis/). Unlike that sample where the C2 was dead before the payload could be retrieved, this chain was fully intact and analyzed end to end.
 
 ---
 
