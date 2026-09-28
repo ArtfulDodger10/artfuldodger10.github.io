@@ -513,7 +513,6 @@ rule xworm_v71 : rat
 | Defense Evasion | T1036.005 | Masquerading | JS disguised as analytics widget |
 | Defense Evasion | T1070.004 | File Deletion | Self-deleting CMD, PS cleanup, `Remove-Item` |
 | Defense Evasion | T1055.012 | Process Hollowing | XWorm injected into `MSBuild.exe` |
-| Defense Evasion | T1127.001 | Trusted Developer Utilities | `MSBuild.exe` as injection host |
 | Defense Evasion | T1562.001 | Impair Defenses | Windows Defender exclusions via PowerShell |
 | Defense Evasion | T1027 | Obfuscated Files or Information | Encrypted config, runtime string decryption |
 | Defense Evasion | T1620 | Reflective Code Loading | `AppDomain.CurrentDomain.Load(byte[])` |
@@ -533,9 +532,8 @@ rule xworm_v71 : rat
 | Command and Control | T1573.001 | Encrypted Channel: Symmetric | AES-128-ECB for all C2 traffic |
 | Command and Control | T1571 | Non-Standard Port | Port `1012` |
 | Command and Control | T1132.001 | Data Encoding: Standard Encoding | Base64 for binary payloads |
-| Impact | T1491 | Defacement | Hosts file manipulation via `Shosts` |
-| Impact | T1498 | Network Denial of Service | HTTP flood via `StartDDos` |
-
+| Impact | T1565.001 | Data Manipulation: Stored Data Manipulation | Hosts file manipulation via `Shosts` |
+| Impact | T1499.002 | Endpoint Denial of Service: Service Exhaustion Flood | HTTP flood via `StartDDos` |
 ---
 
 ## References
