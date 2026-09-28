@@ -22,7 +22,7 @@ categories:
   - Malware Analysis
 image: /assets/images/xworm_rat_minimalist.png
 ---
-**Tools and detections:** the config extractor, YARA rules, IOCs and ATT&CK layer from this analysis are on [GitHub](https://github.com/ArtfulDodger10/xworm-analysis). The extractor has since been tested on 9 XWorm builds, V3.0 to V7.4.
+>**Tools and detections:** the config extractor, YARA rules, IOCs and ATT&CK layer from this analysis are on [GitHub](https://github.com/ArtfulDodger10/xworm-analysis). The extractor has since been tested on 9 XWorm builds, V3.0 to V7.4.
 
 On this page
 
