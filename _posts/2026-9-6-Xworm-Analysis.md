@@ -22,6 +22,7 @@ categories:
   - Malware Analysis
 image: /assets/images/xworm_rat_minimalist.png
 ---
+**Tools and detections:** the config extractor, YARA rules, IOCs and ATT&CK layer from this analysis are on [GitHub](https://github.com/ArtfulDodger10/xworm-analysis). The extractor has since been tested on 9 XWorm builds, V3.0 to V7.4.
 
 On this page
 
@@ -287,11 +288,11 @@ The second copy starts at position 15, overwriting `array[15]` with `digest[0]`.
 digest[0..14] | digest[0] | digest[1..15]
 ```
 
-Position 15 holds `digest[0]`, not `digest[15]`. This one-byte overlap is deliberate — it makes the key non-standard while keeping derivation simple and reproducible from the mutex alone. Anyone replicating the config extractor must implement this exact overlap or produce a wrong key.
+Position 15 holds `digest[0]`, not `digest[15]`. This one-byte overlap is deliberate — it makes the key non-standard while keeping derivation simple and reproducible from the mutex alone. Anyone replicating the config extractor must implement this exact overlap or produce a wrong key. The key is used for AES-256 in ECB mode, so there is no IV and each Base64 setting decrypts on its own.
 
 ![Main AES routine](/assets/images/x/main%20aes.png)
 
-To extract the configuration statically, the key derivation and decryption routine were reimplemented in Python using the plaintext mutex as the only input.
+To extract the configuration statically, I reimplemented the key derivation and decryption in Python. The extractor is [published here](https://github.com/ArtfulDodger10/xworm-analysis/tree/main/tools/xworm_extractor). It finds the mutex by itself, so it also works on builds where the field names are obfuscated.
 
 ![Python config extractor output](/assets/images/x/d.png)
 
@@ -459,6 +460,8 @@ The operator made no meaningful customization to the builder defaults — the AE
 ---
 
 ## YARA Rule
+
+The rule below is the one from the original analysis. An updated set of three rules (family, campaign payload and PowerShell loader), tested on 9 payloads with no hits on System32, is in the repo: [xworm.yar](https://github.com/ArtfulDodger10/xworm-analysis/blob/main/detections/xworm.yar).
 
 ```ruby
 rule xworm_v71 : rat
