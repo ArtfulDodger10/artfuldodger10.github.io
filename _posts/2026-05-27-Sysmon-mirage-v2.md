@@ -2,7 +2,7 @@
 title: Sysmon Mirage v2
 date: 2026-05-26 11:00:00 +0800
 categories: [Blue Teaming]
-tags: [sysmon,soc, process-injection, sigma, mitre-attack, windows-internals, syscalls, blue-team, red-team, t1055, detection-engineering, adversary-emulation, threat-hunting]
+tags: [sysmon,soc, process-injection, sigma, mitre-attack, windows-internals, syscalls, Blue Team, red-team, t1055, detection-engineering, adversary-emulation, threat-hunting]
 image: /assets/images/sysmon_mirage_v2_hero.png
 description: "A controlled adversary emulation project covering three T1055 process injection techniques — Classic Win32 API, Direct Syscalls, and Indirect Syscalls — built from scratch in C and x64 Assembly."
 ---
