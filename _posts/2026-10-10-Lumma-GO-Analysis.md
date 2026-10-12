@@ -122,7 +122,7 @@ The same routine (`main.Decode`) also decodes a 35-byte stack string just before
 
 The decoded result is a complete 32-bit PE, **stage 2**, SHA256 `7c9d4d29…46df`. Before injection, the loader stages the decoded bytes in a pagefile-backed section (`CreateFileMapping(INVALID_HANDLE_VALUE, PAGE_READWRITE, 0x51A08)`), copies them into a `VirtualAlloc` buffer, and unmaps the view.
 
-Because the blob boundaries come straight from the code (the 8-byte immediate and the `rep movsq` count), unpacking needs no debugger. I wrote a small static unpacker, `unpack_stage1.py`. It finds the blob-builder instructions by pattern, resolves the RIP-relative address of the blob, and applies the decode. It produces the exact stage 2 file and should work on other builds of the same loader.
+Because the blob boundaries come straight from the code (the 8-byte immediate and the `rep movsq` count), unpacking needs no debugger. I wrote a small static unpacker, `go_loader.py`. It finds the blob-builder instructions by pattern, resolves the RIP-relative address of the blob, and applies the decode. It produces the exact stage 2 file and should work on other builds of the same loader.
 
 ![Figure(2)](/assets/images/lumma/unpack%20s1.png)
 
@@ -242,7 +242,7 @@ There is one trap here. The cipher **writes its block counter back** into its co
 
 The second configuration string sits right next to the uid pointer and is empty in this build. It is almost certainly the `cid` value: the captured check-in (see below) sends an empty `cid=`, and the code reads this string right between building `&hwid=` and `&cid=`. My extractor calls it `tag` because I named the field before the traffic confirmed it.
 
-`extract_config.py` finds the key, nonce and table by code pattern (no fixed offsets) and outputs the configuration as JSON. The Steam dead-drop URL is a stack string, which the stand-alone extractor doesn't decode: it prints that URL only for this reference sample (matched by hash), and other builds need the IDA string helper.
+`lumma_config.py` finds the key, nonce and table by code pattern (no fixed offsets) and outputs the configuration as JSON. The Steam dead-drop URL is a stack string, which the stand-alone extractor doesn't decode: it prints that URL only for this reference sample (matched by hash), and other builds need the IDA string helper.
 
 ![Figure(14)](/assets/images/lumma/config%20ex.png)
 *Config Extraction*
@@ -360,7 +360,7 @@ This chain pairs a cheap but effective delivery trick with a well-protected stea
 
 ## IoCs
 
-Network indicators are defanged here; the raw list is in [`iocs/iocs.csv`](../iocs/iocs.csv).
+Network indicators are defanged here; the raw list is in [`iocs/iocs.csv`](Full GitHub link to iocs/iocs.csv).
 
 | No. | Description | Value |
 |---|---|---|
@@ -487,5 +487,5 @@ Every finding was tied to a code address or a captured artefact before it went i
 1. VirusTotal
 `https://www.virustotal.com/gui/file/a78c020b15f9950b95d5813baa198612e19ddfa6c47c22b6a379c9d09e836805`
 
-2. Tools from this analysis: `unpack_stage1.py`, `extract_config.py`, `lumma_crypto.py` (repo `tools/`).
+2. Tools from this analysis: `go_loader.py`, `lumma_config.py`, `lumma_crypto.py` (repo `https://github.com/ArtfulDodger10/lumma-stealer-campaign`).
 
