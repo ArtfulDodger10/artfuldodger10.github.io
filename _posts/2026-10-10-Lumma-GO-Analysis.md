@@ -50,7 +50,7 @@ image: /assets/images/lumma/Blog banner.png
 
 ## Lumma TL;DR
 
-This post covers a two-stage chain I'll call the **"GO campaign"**: a loader written in **Go** that carries an infostealer inside itself, decodes it in memory, and injects it into a 32-bit copy of `explorer.exe`. The injected payload is an infostealer. Its code and behaviour (a ChaCha20-encrypted C2 list, a Steam-profile dead drop, the `uid`/`hwid`/`pid` request fields, the `__cf_mw_byp` cookie and per-string obfuscation) match the infostealer family known as **Lumma Stealer**, so I assess the payload is probably Lumma. That rests on how the code looks, not yet on an outside source.
+This post covers a two-stage chain I'll call the **"GO campaign"**: a loader written in **Go** that carries an infostealer inside itself, decodes it in memory, and injects it into a 32-bit copy of `explorer.exe`. The injected payload is an infostealer. Its code and behaviour (a ChaCha20-encrypted C2 list, a Steam-profile dead drop, the `uid`/`hwid`/`pid` request fields, the `__cf_mw_byp` cookie and per-string obfuscation) match the infostealer family known as **Lumma Stealer**, so I assess the payload is Lumma. The second chain I analysed adds support: its payload, which VirusTotal labels Lumma, stores its C2 table in exactly the same way (ChaCha20 key, nonce and table in a row, one continuous keystream, a non-C2 first slot), and the same extractor reads both.
 
 
 ![Figure(0)](/assets/images/lumma/stage1 VT.png) | ![Figure(0)](/assets/images/lumma/stage2%20VT.png)
@@ -234,6 +234,8 @@ The C2 list is stored **encrypted with ChaCha20** (the original 64-bit-nonce var
 
 There is one trap here. The cipher **writes its block counter back** into its context after every call, so the keystream continues from one decryption to the next instead of restarting at zero. Decrypting each entry with counter 0 gives garbage. In this build, slot *i* decrypts with counter **2 + 2·i**. Each 128-byte entry uses two 64-byte blocks, and almost certainly another 128-byte entry is decrypted first, taking blocks 0 and 1.
 
+The AIO chain’s Lumma build confirms this. Its table starts one entry earlier, at 0x44B260 in this build, and that first 128-byte entry is not a C2. The campaign repo counts slots from there, so these nine C2s appear there as slots 1–9.
+
 ![Figure(13)](/assets/images/lumma/chacha.png)
 *The ChaCha20 context is set up from the key and nonce stored in the binary*
 
@@ -365,7 +367,7 @@ Network indicators are defanged here; the raw list is in [`iocs/iocs.csv`](Full 
 | No. | Description | Value |
 |---|---|---|
 | 1 | Stage 1, Go loader (SHA256) | `a78c020b15f9950b95d5813baa198612e19ddfa6c47c22b6a379c9d09e836805` |
-| 2 | Stage 2, stealer, probable Lumma (SHA256) | `7c9d4d29a0b6a623f7ae6495d75d17fb9b17c78d67f9ec9108a62f6bf39546df` |
+| 2 | Stage 2, stealer, Lumma (SHA256) | `7c9d4d29a0b6a623f7ae6495d75d17fb9b17c78d67f9ec9108a62f6bf39546df` |
 | 3 | Stage 2 (MD5) | `5ed61e9e0c26e04d5c1f0dd7e41626f9` |
 | 4 | C2 slot 0 | `convuey[.]cyou` |
 | 5 | C2 slot 1 | `bendavo[.]su/asdsa` |
