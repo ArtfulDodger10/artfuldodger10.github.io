@@ -144,7 +144,7 @@ this build:            h ^= tail * m        (m = 0x5BD1E995)
 This cost me some time. My first Python version used the standard algorithm and matched only 5 of the 12 hashes. Those 5 names all happen to be 12 or 16 characters long, so they never reach the tail code. After I read the tail in the decompiler and fixed my version, all 12 hashes resolved, each to exactly one export.
 
 
-All 12 are resolved from `KERNEL32.DLL`, which the crypter finds by walking the PEB's loaded-module list and comparing each name with `wcscmp`. They are resolved one after another in the core function (`0x14000D5D1`–`0x14000D6B7`). My script is in the repo as `tools/murmur2_variant.py`.
+All 12 are resolved from `KERNEL32.DLL`, which the crypter finds by walking the PEB's loaded-module list and comparing each name with `wcscmp`. They are resolved one after another in the core function (`0x14000D5D1`–`0x14000D6B7`). My script is in the repo as `“tools/api_hashes.py (hash in tools/crypto.py)”`.
 
 ![Figure(3): The 12 hashes passed to the API resolver.](/assets/images/lumma/rust/fig%203.1.png)|![Figure(3)](/assets/images/lumma/rust/fig%203.2.png)
 
@@ -621,3 +621,4 @@ rule AIOChecker_Lumma_build_37d7c3a0
 - MITRE ATT&CK T1055.012, Process Injection: Process Hollowing — https://attack.mitre.org/techniques/T1055/012/
 - MITRE ATT&CK T1547.001, Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder — https://attack.mitre.org/techniques/T1547/001/
 - MITRE ATT&CK T1102.001, Web Service: Dead Drop Resolver — https://attack.mitre.org/techniques/T1102/001/
+- GitHub repo `https://github.com/ArtfulDodger10/lumma-stealer-campaign`
