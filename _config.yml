@@ -150,6 +150,7 @@ pwa:
     # shares the same domain name as the current website.
     deny_paths:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
+      - "/portfolio" # the standalone 3D portfolio (repo ArtfulDodger10/portfolio) shares this domain
 
 paginate: 10
 
