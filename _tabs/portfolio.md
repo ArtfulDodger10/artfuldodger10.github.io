@@ -1,8 +1,13 @@
 ---
-title: Portfolio
+title: Projects
 icon: fas fa-briefcase
 order: 0
+# /portfolio/ now belongs to the 3D portfolio (repo ArtfulDodger10/portfolio)
+permalink: /projects/
 ---
+
+> The full portfolio, with every case file, the CTI work and my CV, lives at **[artfuldodger10.github.io/portfolio](/portfolio/)**. This page is the plain list of write-ups.
+{: .prompt-tip }
 
 I reverse malware end to end: from the delivery chain to the final payload, then turn
 what I find into tools and detections other analysts can reuse. Each project below has

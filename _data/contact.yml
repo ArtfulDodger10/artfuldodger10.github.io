@@ -6,6 +6,10 @@
 - type: twitter
   icon: "fa-brands fa-x-twitter"
 
+- type: portfolio
+  icon: "fas fa-hat-wizard"
+  url: "https://artfuldodger10.github.io/portfolio/"
+
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
